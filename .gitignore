@@ -1,0 +1,45 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+**/node_modules/**
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+cypress/videos
+cypress/screenshots
+cypress/fixtures/example.json
+**/packages/**/coverage
+
+# next.js
+out/
+.idea/
+
+# production
+dist
+**/dist/**
+
+# misc
+.DS_Store
+.eslintcache
+
+# local env files
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+debug.log*
+**/logs
+
+# Sentry
+.sentryclirc
+
+# typescript
+*.tsbuildinfo
+**/stories/**

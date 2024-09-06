@@ -1,0 +1,72 @@
+version: '3'
+networks:
+  default:
+    driver: bridge
+services:
+  cerberus:
+    ports:
+      - '3000:3000'
+    restart: 'unless-stopped'
+    env_file:
+      - ./.env.production.local
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      target: prod-server
+      args:
+        - NPM_TOKEN=${NPM_TOKEN}
+    volumes:
+      - /app/node_modules
+    depends_on:
+      - redis
+      - postgres
+      - kafka
+  # hermes:
+  #   ports:
+  #     - '3001:3000'
+  #   restart: 'unless-stopped'
+  #   env_file:
+  #     - ./hermes/.env.production.local
+  #   build:
+  #     context: ./hermes/
+  #     dockerfile: ./Dockerfile
+  #     target: prod-server
+  #     args:
+  #       - NPM_TOKEN=${NPM_TOKEN}
+  #   volumes:
+  #     - /app/node_modules
+  #   depends_on:
+  #     - cerberus
+  # redis:
+  #   image: redis/redis-stack:latest
+  #   ports:
+  #     - 6379:6379
+  #     - 8001:8001
+  postgres:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db
+    restart: 'unless-stopped'
+    ports:
+      - 5432:5432
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    ports:
+      - '2181:2181'
+    restart: unless-stopped
+  kafka:
+    image: wurstmeister/kafka:latest
+    ports:
+      - '9092:9092'
+    links:
+      - zookeeper
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: ${HOST_IP}
+      # KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_DELETE_TOPIC_ENABLE: 'true'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
