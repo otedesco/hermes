@@ -1,3 +1,3 @@
 # Hermes
 
-## notification broker service
+## Notification broker service
