@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Setup environment
-        uses: otedesco/cerberus/.github/actions/setup-environment@main
+        uses: otedesco/hermes/.github/actions/setup-environment@main
         with:
           os: ubuntu-latest
 

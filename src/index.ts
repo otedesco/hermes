@@ -1,7 +1,7 @@
 import http from 'http';
 import cluster, { Worker } from 'node:cluster';
 
-import { Consumer, ConsumerConfig } from '@apart-re/notify';
+import { Consumer, ConsumerConfig } from '@otedesco/notify';
 import _ from 'lodash';
 
 import { SERVER_PORT } from './configs/AppConfig';

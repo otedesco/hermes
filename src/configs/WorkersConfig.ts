@@ -1,4 +1,4 @@
-import { Consumer, ConsumerConfig } from '@apart-re/notify';
+import { Consumer, ConsumerConfig } from '@otedesco/notify';
 import { config } from 'dotenv';
 import _ from 'lodash';
 
