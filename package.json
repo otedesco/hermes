@@ -18,6 +18,7 @@
     "start": "pnpm run build && cross-env NODE_ENV=production node dist/index.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "build": "swc src -d dist --source-maps --copy-files",
+    "type:check": "tsc --noEmit",
     "format": "prettier \"src/**/*.ts\" --write",
     "format:check": "prettier \"src/**/*.ts\" --check",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/ --fix",
