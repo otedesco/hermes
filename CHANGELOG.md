@@ -1,5 +1,11 @@
 # @otedesco/hermes
 
+## 0.0.2
+
+### Patch Changes
+
+- [#4](https://github.com/otedesco/hermes/pull/4) [`22f81bc`](https://github.com/otedesco/hermes/commit/22f81bc7031f39053f621074f6cbab23bfe8b304) Thanks [@otedesco](https://github.com/otedesco)! - add publishingConfig to package.json
+
 ## 0.0.1
 
 ### Patch Changes
