@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: ghcr.io/${{github.repository_owner}}/cerberus
+          - image: ghcr.io/${{github.repository_owner}}/hermes
             dockerfile: ./Dockerfile
     steps:
       - name: Checkout Repo
