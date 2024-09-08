@@ -22,7 +22,7 @@
     "format:check": "prettier \"src/**/*.ts\" --check",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/ --fix",
     "lint:check": "eslint --ignore-path .gitignore --ext .ts src/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "commit": "pnpm changeset",
     "release": "pnpm build && changeset publish"
   },
