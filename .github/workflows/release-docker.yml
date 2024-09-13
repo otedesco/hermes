@@ -1,55 +1,18 @@
 name: Release Docker Images
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - 'main'
     tags:
-      - 'v*'
-  pull_request:
-    branches:
-      - 'main'
+      - '**'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release-service:
-    name: Release Docker image
-    runs-on: ubuntu-latest
-    # if: contains(github.event.commits.message, 'Version Packages')
-    strategy:
-      matrix:
-        include:
-          - image: ghcr.io/${{github.repository_owner}}/hermes
-            dockerfile: ./Dockerfile
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: replace token
-        run: |
-          echo -e "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" > "./.npmrc"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ matrix.image }}
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GH_TOKEN }}
-
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ${{ matrix.dockerfile }}
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: ${{ secrets.NPM_TOKEN }}
+  quality-checks:
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@main
+    secrets: inherit
+  release-docker:
+    needs: [quality-checks]
+    uses: otedesco/gh-action-templates/.github/workflows/release-docker-image.yml@main
+    secrets: inherit
