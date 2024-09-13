@@ -1,5 +1,11 @@
 # @otedesco/hermes
 
+## 0.0.3
+
+### Patch Changes
+
+- [#6](https://github.com/otedesco/hermes/pull/6) [`89a293e`](https://github.com/otedesco/hermes/commit/89a293e3f51c95fb401e811ec6a8ed494f41fcc1) Thanks [@otedesco](https://github.com/otedesco)! - centralize actions and workflows on gh-actions-templates repo
+
 ## 0.0.2
 
 ### Patch Changes
