@@ -64,6 +64,7 @@
     "@otedesco/server-utils": "^0.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "email-validator": "^2.0.4",
     "express": "^4.21.0",
     "express-async-handler": "^1.2.0",
     "lodash": "^4.17.21",

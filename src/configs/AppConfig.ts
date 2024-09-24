@@ -13,3 +13,4 @@ export const PROMISE_CONCURRENCY = +environment.PROMISE_CONCURRENCY! || 10;
 
 export const SENDER_EMAIL = environment.SENDER_EMAIL || '';
 export const SENDER_PASSWORD = environment.SENDER_PASSWORD || '';
+export const EMAIL_SERVICE = environment.EMAIL_SERVICE || 'gmail';
