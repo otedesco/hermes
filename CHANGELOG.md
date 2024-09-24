@@ -1,5 +1,11 @@
 # @otedesco/hermes
 
+## 0.0.6
+
+### Patch Changes
+
+- [`cdd3853`](https://github.com/otedesco/hermes/commit/cdd3853fabacd7fca9f4cc4089ee6496effc1e26) Thanks [@otedesco](https://github.com/otedesco)! - fix module not found on docker excution
+
 ## 0.0.5
 
 ### Patch Changes
