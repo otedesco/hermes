@@ -10,3 +10,6 @@ export const CLIENT_HOST = environment.CLIENT_HOST || 'http://localhost:3000';
 export const LOG_LEVEL = environment.LOG_LEVEL || 'INFO';
 
 export const PROMISE_CONCURRENCY = +environment.PROMISE_CONCURRENCY! || 10;
+
+export const SENDER_EMAIL = environment.SENDER_EMAIL || '';
+export const SENDER_PASSWORD = environment.SENDER_PASSWORD || '';

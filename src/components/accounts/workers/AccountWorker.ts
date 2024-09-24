@@ -13,7 +13,7 @@ export type AccountEvents = (typeof EventsByProducer)[typeof AuthProducer]['acco
 
 const accountEvents = EventsByProducer[AuthProducer].account;
 
-const handlerByEvent = {
+export const handlerByEvent = {
   [accountEvents.CreatedEvent]: createHandler,
   [accountEvents.UpdatedEvent]: updateHandler,
   [accountEvents.DeletedEvent]: deleteHandler,

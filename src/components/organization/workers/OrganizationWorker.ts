@@ -4,7 +4,7 @@ import { getLogger } from '../../../utils';
 const logger = getLogger('OrganizationWorker');
 
 export type OrganizationEvents = (typeof EventsByProducer)[typeof AuthProducer]['organization'];
-const organizationEvents = EventsByProducer[AuthProducer].organization;
+export const organizationEvents = EventsByProducer[AuthProducer].organization;
 const handlerByEvent = {
   [organizationEvents.CreatedEvent]: logger.info,
   [organizationEvents.UpdatedEvent]: logger.info,

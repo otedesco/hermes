@@ -1,3 +1,5 @@
+import { sendMail } from 'services/nodemailer';
+
 import { getLogger } from '../../../utils';
 import changePasswordTemplate from '../templates/ChangePasswordTemplate';
 import verifyEmailTemplate from '../templates/VerifyEmailTemplate';
@@ -7,13 +9,13 @@ const logger = getLogger('AccountService');
 
 export const createHandler = async (
   event: AccountEvents[keyof AccountEvents],
-  payload: { email: string; token: string },
+  payload: { email: string; token: string; otp: string },
 ) => {
   const subject = 'Verify your email';
-  const body = verifyEmailTemplate(payload.token);
+  const body = verifyEmailTemplate(payload.otp);
   // TODO: Send verification Email
 
-  return [subject, body, event, payload];
+  return sendMail(payload.email, subject, body);
 };
 
 export const updateHandler = async (event: AccountEvents[keyof AccountEvents], payload: any) => {
