@@ -1,5 +1,11 @@
 # @otedesco/hermes
 
+## 0.0.5
+
+### Patch Changes
+
+- [#10](https://github.com/otedesco/hermes/pull/10) [`f4a479c`](https://github.com/otedesco/hermes/commit/f4a479cabbab74c9997cd469f1c6ae5e4579fa3b) Thanks [@otedesco](https://github.com/otedesco)! - Add handling for account sync events and implement email sender functionality
+
 ## 0.0.4
 
 ### Patch Changes
