@@ -43,3 +43,4 @@ debug.log*
 # typescript
 *.tsbuildinfo
 **/stories/**
+.vercel
