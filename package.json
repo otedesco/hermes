@@ -19,7 +19,8 @@
     "pnpm": ">=8.6.10"
   },
   "scripts": {
-    "start": "pnpm run build && cross-env NODE_ENV=production node dist/index.js",
+    "start": "pnpm run build && cross-env NODE_ENV=production node dist/index-server.js",
+    "start-worker": "pnpm run build && cross-env NODE_ENV=production node dist/index-worker.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "build": "swc src -d dist --source-maps --copy-files",
     "type:check": "tsc --noEmit",
@@ -29,13 +30,16 @@
     "lint:check": "eslint --ignore-path .gitignore --ext .ts src/",
     "test": "echo \"Error: no test specified\" && exit 0",
     "commit": "pnpm changeset",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && changeset publish",
+    "deploy-vercel": "pnpm build && vercel --prod"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.8",
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.84",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
     "@types/lodash": "^4.14.198",
     "@types/node": "^20.6.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
@@ -54,8 +58,13 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@otedesco/commons": "^0.0.5",
     "@otedesco/notify": "^0.0.2",
+    "@otedesco/server-utils": "^0.0.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "express": "^4.21.0",
+    "express-async-handler": "^1.2.0",
     "lodash": "^4.17.21",
     "log4js": "^6.9.1"
   }

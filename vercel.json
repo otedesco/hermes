@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "installCommand": "pnpm install",
+    "buildCommand": "pnpm run build",
+    "outputDirectory": "dist",
+    "builds": [
+        {
+            "src": "dist/api/v1.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "dist/api/v1.js"
+        }
+    ]
+}
