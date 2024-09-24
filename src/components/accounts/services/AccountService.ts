@@ -12,7 +12,6 @@ export const createHandler = async (
 ) => {
   const subject = 'Verify your email';
   const body = verifyEmailTemplate(payload.otp);
-  // TODO: Send verification Email
 
   return sendMail(payload.email, subject, body);
 };

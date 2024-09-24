@@ -2,4 +2,4 @@
 '@otedesco/hermes': patch
 ---
 
-handle account sync events and implementation of email sender
+Add handling for account sync events and implement email sender functionality
