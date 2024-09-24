@@ -1,6 +1,6 @@
-import { SENDER_EMAIL, SENDER_PASSWORD } from 'configs/AppConfig';
 import nodemailer from 'nodemailer';
 
+import { SENDER_EMAIL, SENDER_PASSWORD } from '../configs/AppConfig';
 import { getLogger } from '../utils/Logger';
 
 const logger = getLogger('AccountWorker');
