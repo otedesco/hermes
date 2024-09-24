@@ -1,5 +1,13 @@
 # @otedesco/hermes
 
+## 0.0.4
+
+### Patch Changes
+
+- [#8](https://github.com/otedesco/hermes/pull/8) [`a408ae8`](https://github.com/otedesco/hermes/commit/a408ae81cd6d43c6ebead020670ca68e2a1c5636) Thanks [@otedesco](https://github.com/otedesco)! - add http server for sync events
+
+- [#8](https://github.com/otedesco/hermes/pull/8) [`7ee3120`](https://github.com/otedesco/hermes/commit/7ee3120d9f04c75883f75eb4ed1bc2589dc558f2) Thanks [@otedesco](https://github.com/otedesco)! - centralize actions and workflows on gh-actions-templates repo
+
 ## 0.0.3
 
 ### Patch Changes
