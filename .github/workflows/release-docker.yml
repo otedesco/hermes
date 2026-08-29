@@ -11,8 +11,13 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   quality-checks:
     uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@main
-    secrets: inherit
+    with:
+      registry-auth-required: true
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   release-docker:
     needs: [quality-checks]
     uses: otedesco/gh-action-templates/.github/workflows/release-docker-image.yml@main
-    secrets: inherit
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
