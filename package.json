@@ -16,8 +16,10 @@
     "registry": "https://ghcr.io"
   },
   "engines": {
-    "pnpm": ">=8.6.10"
+    "node": "24.20.0",
+    "pnpm": "10.34.0"
   },
+  "packageManager": "pnpm@10.34.0",
   "scripts": {
     "start": "pnpm run build && cross-env NODE_ENV=production node dist/index-server.js",
     "start-worker": "pnpm run build && cross-env NODE_ENV=production node dist/index-worker.js",
