@@ -1,11 +1,10 @@
-FROM node:18.17.0-alpine as installer
-ARG NPM_TOKEN
+FROM node:24.20.0-alpine as installer
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN corepack enable && corepack install --global pnpm@10.34.0
 WORKDIR /app
 COPY package.json pnpm-lock.yaml .npmrc ./
-RUN pnpm install
+RUN --mount=type=secret,id=npm_token,env=NPM_TOKEN pnpm install --frozen-lockfile
 RUN rm .npmrc
 
 FROM installer as builder
@@ -15,7 +14,7 @@ COPY ./src  ./src
 RUN pnpm run build
 RUN pnpm prune --prod
 
-FROM gcr.io/distroless/nodejs18-debian11 as prod-server
+FROM node:24.20.0-alpine as prod-server
 WORKDIR /app
 COPY --from=builder app/package.json .
 COPY --from=builder app/pnpm-lock.yaml .
