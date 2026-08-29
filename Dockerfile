@@ -1,12 +1,14 @@
+# syntax=docker/dockerfile:1.7
 FROM node:24.20.0-alpine as installer
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable && corepack install --global pnpm@10.34.0
 WORKDIR /app
 COPY package.json pnpm-lock.yaml .npmrc ./
-RUN --mount=type=secret,id=npm_token,env=NPM_TOKEN pnpm install --frozen-lockfile
-RUN rm .npmrc
-
+RUN --mount=type=secret,id=npm_token,required=true \
+    NPM_TOKEN="$(cat /run/secrets/npm_token)" \
+    pnpm install --frozen-lockfile && \
+    rm .npmrc
 FROM installer as builder
 WORKDIR /app
 COPY .swcrc ./
