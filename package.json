@@ -30,10 +30,12 @@
     "format:check": "prettier \"src/**/*.ts\" --check",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/ --fix",
     "lint:check": "eslint --ignore-path .gitignore --ext .ts src/",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "node -e \"console.error('OPS-217 test harness is not implemented'); process.exitCode = 1\"",
+    "test:coverage": "node -e \"console.error('OPS-217 test harness is not implemented'); process.exitCode = 1\"",
     "commit": "pnpm changeset",
     "release": "pnpm build && changeset publish",
-    "deploy-vercel": "pnpm build && vercel --prod"
+    "deploy-vercel": "pnpm build && vercel --prod",
+    "quality:check": "pnpm run format:check && pnpm run lint:check && pnpm run type:check && pnpm run test && pnpm run test:coverage && pnpm run build"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
