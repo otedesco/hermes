@@ -21,8 +21,20 @@ jobs:
       contents: read
     uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@528e0d92182a23a12f9d6d4dae67c4b0e98fcffb # OPS-183 least-privilege workflows
 
-  security:
-    name: Security / aggregate
+  quality-gate:
+    name: Quality / core
+    if: ${{ always() }}
+    needs: [lint-and-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Require quality workflow
+        env:
+          QUALITY_RESULT: ${{ needs.lint-and-test.result }}
+        run: test "$QUALITY_RESULT" = success
+
+  security-workflow:
     permissions:
       contents: read
       pull-requests: read
@@ -31,7 +43,16 @@ jobs:
       registry-auth-required: true
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    with:
-      registry-auth-required: true
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  security-gate:
+    name: Security / aggregate
+    if: ${{ always() }}
+    needs: [security-workflow]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Require security workflow
+        env:
+          SECURITY_RESULT: ${{ needs.security-workflow.result }}
+        run: test "$SECURITY_RESULT" = success
