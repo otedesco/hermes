@@ -39,6 +39,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
+      security-events: write
     uses: otedesco/gh-action-templates/.github/workflows/security.yml@dee28264b5f99ed00e72f1f017e952e3e83b74b3 # OPS-186 merged central security workflow
     with:
       registry-auth-required: true
