@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "repository": "hermes",
+  "commit": "cdc5d15f101dbf9704162a03f58b745ff030cf58",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "metrics": {
+    "statements": { "covered": 16, "total": 761, "percent": 2.102496714848883 },
+    "branches": { "covered": 1, "total": 21, "percent": 4.761904761904762 },
+    "functions": { "covered": 1, "total": 21, "percent": 4.761904761904762 },
+    "lines": { "covered": 16, "total": 761, "percent": 2.102496714848883 }
+  }
+}
