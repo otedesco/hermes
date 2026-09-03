@@ -38,7 +38,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: otedesco/gh-action-templates/.github/workflows/security.yml@32dcc51235dc1332104aab1ceb461e495ba8761f # OPS-184 security gates
+    uses: otedesco/gh-action-templates/.github/workflows/security.yml@dee28264b5f99ed00e72f1f017e952e3e83b74b3 # OPS-186 merged central security workflow
     with:
       registry-auth-required: true
     secrets:
