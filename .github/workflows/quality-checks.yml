@@ -19,7 +19,7 @@ jobs:
   lint-and-test:
     permissions:
       contents: read
-    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@528e0d92182a23a12f9d6d4dae67c4b0e98fcffb # OPS-183 least-privilege workflows
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@dee28264b5f99ed00e72f1f017e952e3e83b74b3 # OPS-186 merged central workflow
 
   quality-gate:
     name: Quality / core
