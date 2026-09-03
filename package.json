@@ -21,11 +21,11 @@
   },
   "packageManager": "pnpm@10.34.0",
   "scripts": {
-    "clean": "rimraf dist coverage",
+    "clean": "node -e \"const fs = require('node:fs'); for (const path of ['dist', 'coverage']) fs.rmSync(path, { recursive: true, force: true })\"",
     "start": "pnpm run build && cross-env NODE_ENV=production node dist/index-server.js",
     "start-worker": "pnpm run build && cross-env NODE_ENV=production node dist/index-worker.js",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "build": "pnpm run clean && swc src -d dist --source-maps --copy-files",
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && swc src -d dist --source-maps --copy-files",
     "type:check": "tsc --noEmit",
     "format": "prettier \"src/**/*.ts\" --write",
     "format:check": "prettier \"**/*.{ts,js,json,md}\" --check",
