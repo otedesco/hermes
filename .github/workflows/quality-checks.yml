@@ -19,7 +19,12 @@ jobs:
   lint-and-test:
     permissions:
       contents: read
+      packages: read
     uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@dee28264b5f99ed00e72f1f017e952e3e83b74b3 # OPS-186 merged central workflow
+    with:
+      registry-auth-required: true
+    secrets:
+      NPM_TOKEN: ${{ github.token }}
 
   quality-gate:
     name: Quality / core
@@ -40,8 +45,9 @@ jobs:
       contents: read
       pull-requests: read
       security-events: write
+      packages: read
     uses: otedesco/gh-action-templates/.github/workflows/security.yml@dee28264b5f99ed00e72f1f017e952e3e83b74b3 # OPS-186 merged central security workflow
     with:
       registry-auth-required: true
     secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ github.token }}
