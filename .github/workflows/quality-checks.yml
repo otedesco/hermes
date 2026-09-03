@@ -20,6 +20,7 @@ jobs:
     permissions:
       contents: read
       packages: read
+      packages: read
     uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@0744378d42b14fa3dc7bd2073cc8b54e75f90749 # OPS-186 package-authenticated central workflow
     with:
       registry-auth-required: true
@@ -45,6 +46,7 @@ jobs:
       contents: read
       pull-requests: read
       security-events: write
+      packages: read
       packages: read
     uses: otedesco/gh-action-templates/.github/workflows/security.yml@0744378d42b14fa3dc7bd2073cc8b54e75f90749 # OPS-186 package-authenticated central workflow
     with:
